@@ -1,0 +1,4 @@
+repository "SlutProjeckt2/SlutProjeckt2@5773924119570@cloud"
+  path "/"
+    br "/main"
+    co "/main"
