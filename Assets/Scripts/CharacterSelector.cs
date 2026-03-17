@@ -1,59 +1,53 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterSelector : MonoBehaviour
 {
-    [SerializeField]
-    GameObject[] characters;
+    public GameObject[] playerObjects;
 
     [SerializeField]
     int selectedCharacter = 0;
 
+    public float switchTime = 3f;
+
     bool valid = false;
+    public string gameScene = "Game";
+    private string selectedCharacterDataName = "SelectedCharacter";
 
-
-    
+     void Start()
+    {
+        StartCoroutine(CharacterLoop());
+        HideAllCharacters();
+        selectedCharacter = PlayerPrefs.GetInt(selectedCharacterDataName, 0);
+        playerObjects[selectedCharacter].SetActive(true);
+    }
     private void HideAllCharacters()
     {
-        foreach (GameObject g in characters)
+        foreach (GameObject g in playerObjects)
         {
             g.SetActive(false);
         }
     }
-    // public void RightCharacter()
-    // {
-    // characters[selectedCharacter].SetActive(false);
-    //     selectedCharacter++;
-    //     if (selectedCharacter > characters.Length)
-    //     {
-    //         selectedCharacter = 0;
-    //     }
-    //     characters[selectedCharacter].SetActive(true);
-    // }
-    // public void PreviousCharacter()
-    // {
-    //     characters[selectedCharacter].SetActive(false);
-    //     selectedCharacter--;
-    //     if (selectedCharacter < characters.Length)
-    //     {
-    //         selectedCharacter = 3;
-    //     }
-    //     characters[selectedCharacter].SetActive(true);
-    // }
-    public void CharacterLoop()
+    public IEnumerator CharacterLoop()
     {
-        while (selectedCharacter < characters.Length && !valid)
+        while (true)
         {
-            characters[selectedCharacter].SetActive(false);
+            playerObjects[selectedCharacter].SetActive(false);
             selectedCharacter++;
-            if (selectedCharacter == characters.Length)
+            if (selectedCharacter >= playerObjects.Length)
             {
                 selectedCharacter = 0;
             }
-            characters[selectedCharacter].SetActive(true);
-
+            playerObjects[selectedCharacter].SetActive(true);
+             yield return new WaitForSeconds(switchTime);
         }
     }
-
+    public void StartGame ()
+    {
+        PlayerPrefs.SetInt(selectedCharacterDataName, selectedCharacter);
+        SceneManager.LoadScene("Game");
+    }
 }
 
