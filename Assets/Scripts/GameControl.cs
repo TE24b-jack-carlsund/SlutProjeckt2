@@ -6,7 +6,7 @@ public class GameControl : MonoBehaviour
    public GameObject[] characters;
    public Transform playerStartPosition;
    public string menuScene = "CharacterSelection";
-   private string selectedCharacterDataName = "SelectedCharacter";
+   private string selectedCharacterDataName = "Fågel1";
    int selectedCharacter;
    public GameObject playerObject;
     void Start()
@@ -23,6 +23,6 @@ public class GameControl : MonoBehaviour
     }
     public void ReturnToMainMenu()
     {
-        SceneManager.LoadScene("Meny");
+        SceneManager.LoadScene("Menu");
     }
 }
