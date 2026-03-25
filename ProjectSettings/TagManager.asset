@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Play
+  - SceneChanger2
   layers:
   - Default
   - TransparentFX

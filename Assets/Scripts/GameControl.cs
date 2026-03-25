@@ -6,12 +6,12 @@ public class GameControl : MonoBehaviour
    public GameObject[] characters;
    public Transform playerStartPosition;
    public string menuScene = "CharacterSelection";
-   private string selectedCharacterDataName = "Fågel1";
+   private string selectedCharacterDataName = "SelectedCharacter";
    int selectedCharacter;
    public GameObject playerObject;
     void Start()
     {
-        selectedCharacter = PlayerPrefs.GetInt(selectedCharacterDataName, 0);
+       selectedCharacter = PlayerPrefs.GetInt(selectedCharacterDataName, 0);
         playerObject = Instantiate(characters[selectedCharacter], playerStartPosition.position, characters[selectedCharacter].transform.rotation);
     }
     void Update()

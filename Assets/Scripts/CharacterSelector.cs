@@ -13,9 +13,10 @@ public class CharacterSelector : MonoBehaviour
     public float switchTime = 3f;
 
     bool valid = false;
-    public string gameScene = "Game";
+    
     private string selectedCharacterDataName = "SelectedCharacter";
 
+    // Gömmer alla karaktärer förutom en, sedan kommer den man väljer sparas i selected character
      void Start()
     {
         StartCoroutine(CharacterLoop());
@@ -23,6 +24,7 @@ public class CharacterSelector : MonoBehaviour
         selectedCharacter = PlayerPrefs.GetInt(selectedCharacterDataName, 0);
         playerObjects[selectedCharacter].SetActive(true);
     }
+    // Gör att man inte kan se karaktärerna i arrayn.
     private void HideAllCharacters()
     {
         foreach (GameObject g in playerObjects)
@@ -30,6 +32,7 @@ public class CharacterSelector : MonoBehaviour
             g.SetActive(false);
         }
     }
+    // Character loop som loopas så att karaktären i characterselectern byts automatiskt.
     public IEnumerator CharacterLoop()
     {
         while (true)
@@ -44,10 +47,13 @@ public class CharacterSelector : MonoBehaviour
              yield return new WaitForSeconds(switchTime);
         }
     }
+
+    // Gör att gubben spånas in när spelet börjar
     public void StartGame ()
     {
+        StopAllCoroutines();
         PlayerPrefs.SetInt(selectedCharacterDataName, selectedCharacter);
-        SceneManager.LoadScene(gameScene);
+        SceneManager.LoadScene("Game");
     }
 }
 

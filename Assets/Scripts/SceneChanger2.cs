@@ -4,9 +4,14 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger2 : MonoBehaviour
 {
+    public CharacterSelector characterselector;
+
     
-    public void ChangeScene2()
+    void Update()
     {
-        SceneManager.LoadScene("Game");
+        
     }
+
+    
+   
 }
