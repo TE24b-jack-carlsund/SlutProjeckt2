@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1962551610083019626}
   - component: {fileID: 6700069386047936979}
-  - component: {fileID: -1804858306758612107}
-  - component: {fileID: -3028423570238540843}
   - component: {fileID: 3868360335837274233}
+  - component: {fileID: 6597581197466872443}
+  - component: {fileID: 6708408096159979}
   m_Layer: 0
   m_Name: "F\xE5gel3"
   m_TagString: Untagged
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6657026015205795385}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 555.254, y: 154.148, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -555, y: -151, z: 0}
   m_LocalScale: {x: 16, y: 16, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1036203379486744577, guid: f835562507ecd9f4f99dc90491ae2cef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -94,34 +94,25 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!50 &-1804858306758612107
-Rigidbody2D:
-  serializedVersion: 5
+--- !u!114 &3868360335837274233
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6657026015205795385}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0.5
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9decc4913d038fe4cb5d1c1c05f7fcb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BirdController
+  jumpForce: 2
+  speed: 2.5
+  groundChecker: {fileID: 0}
+  groundLayer:
     serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &-3028423570238540843
+    m_Bits: 8
+--- !u!61 &6597581197466872443
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,21 +158,30 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.1, y: 0.09}
   m_EdgeRadius: 0
---- !u!114 &3868360335837274233
-MonoBehaviour:
+--- !u!50 &6708408096159979
+Rigidbody2D:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6657026015205795385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9decc4913d038fe4cb5d1c1c05f7fcb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BirdController
-  jumpForce: 2
-  speed: 2.5
-  groundChecker: {fileID: 0}
-  groundLayer:
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 4.5
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -10,7 +10,7 @@ public class CharacterSelector : MonoBehaviour
     [SerializeField]
     int selectedCharacter = 0;
 
-    public float switchTime = 3f;
+    public float switchTime = 1f;
 
     bool valid = false;
     
