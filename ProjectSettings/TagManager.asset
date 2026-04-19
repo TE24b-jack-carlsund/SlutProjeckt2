@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Play
   - SceneChanger2
+  - Ground
+  - Enemy
+  - Logic
   layers:
   - Default
   - TransparentFX

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,7 +13,10 @@ public class GameControl : MonoBehaviour
     void Start()
     {
        selectedCharacter = PlayerPrefs.GetInt(selectedCharacterDataName, 0);
-        playerObject = Instantiate(characters[selectedCharacter], playerStartPosition.position, characters[selectedCharacter].transform.rotation);
+        // playerObject = Instantiate(characters[selectedCharacter], playerStartPosition.position, characters[selectedCharacter].transform.rotation);
+        playerObject = Instantiate(characters[selectedCharacter]) as GameObject;
+          Vector3 spawn = new Vector3(-4, -1, 1);
+           playerObject.transform.position = spawn;
     }
     void Update()
     {
@@ -20,6 +24,7 @@ public class GameControl : MonoBehaviour
         {
             ReturnToMainMenu();
         }
+      
     }
     public void ReturnToMainMenu()
     {
