@@ -17,7 +17,6 @@ public class JumpController : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
-        
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
