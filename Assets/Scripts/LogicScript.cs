@@ -24,8 +24,9 @@ public class LogicScript : MonoBehaviour
    }
    public void Health()
    {
-      currentHp--;
+       currentHp--;
       hp.value = currentHp;
+     
       if (maxHp == currentHp)
       {
          Debug.Log("Död");

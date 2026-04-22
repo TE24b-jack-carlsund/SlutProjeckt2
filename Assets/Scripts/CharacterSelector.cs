@@ -12,7 +12,7 @@ public class CharacterSelector : MonoBehaviour
 
     public float switchTime = 1f;
 
-    bool valid = false;
+
     
     private string selectedCharacterDataName = "SelectedCharacter";
 

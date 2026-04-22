@@ -12,7 +12,6 @@ public class EnemyMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
-        
     }   
       
     // Update is called once per frame
@@ -23,7 +22,6 @@ public class EnemyMovement : MonoBehaviour
         {
             Destroy(gameObject);
             logic.AddScore();
-            logic.Health();
         }
     }
     void FixedUpdate()
