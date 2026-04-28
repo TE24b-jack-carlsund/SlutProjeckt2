@@ -1,10 +1,13 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BirdController : MonoBehaviour
 {
     private LogicScript logic;
     [SerializeField]
     float speed = 2.5f;
+
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();

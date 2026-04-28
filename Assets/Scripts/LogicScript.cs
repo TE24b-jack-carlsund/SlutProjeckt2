@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class LogicScript : MonoBehaviour
 {
+   public SceneChanger2 senechanger2;
+   
    public int playerScore;
    [SerializeField]
     TMP_Text score;
@@ -15,7 +17,11 @@ public class LogicScript : MonoBehaviour
 
     void Start()
     {
+      
       currentHp = maxHp;
+      hp.maxValue = maxHp;
+      hp.value = currentHp;
+      
     }
      public void AddScore()
    {
@@ -25,11 +31,9 @@ public class LogicScript : MonoBehaviour
    public void Health()
    {
        currentHp--;
+       Debug.Log(currentHp);
       hp.value = currentHp;
+      
      
-      if (maxHp == currentHp)
-      {
-         Debug.Log("Död");
-      }
    }
 }
