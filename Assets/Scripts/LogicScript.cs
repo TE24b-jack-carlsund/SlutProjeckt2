@@ -1,11 +1,11 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LogicScript : MonoBehaviour
 {
-   public SceneChanger2 senechanger2;
+   private SceneChanger2 senechanger2;
    
    public int playerScore;
    [SerializeField]
@@ -17,7 +17,6 @@ public class LogicScript : MonoBehaviour
 
     void Start()
     {
-      
       currentHp = maxHp;
       hp.maxValue = maxHp;
       hp.value = currentHp;
@@ -31,9 +30,10 @@ public class LogicScript : MonoBehaviour
    public void Health()
    {
        currentHp--;
-       Debug.Log(currentHp);
       hp.value = currentHp;
-      
-     
+      if (currentHp == 0)
+      {
+         SceneManager.LoadScene("End");
+      }
    }
 }

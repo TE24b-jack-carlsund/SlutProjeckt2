@@ -193,7 +193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4662c801a442a14e922cf313749001a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  boomPrefab: {fileID: 7444704021597330902}
 --- !u!114 &-5009159709592513411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,4 +205,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4662c801a442a14e922cf313749001a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
-  boomPrefab: {fileID: 1912032276183046408, guid: f2ca1c3c7d91fbc48931e48e76de45d4, type: 3}
