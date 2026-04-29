@@ -11,11 +11,10 @@ public class GameControl : MonoBehaviour
    public GameObject playerObject;
     void Start()
     {
-       selectedCharacter = PlayerPrefs.GetInt(selectedCharacterDataName, 0); //stoppar in index nummret i selectedkäräkter
-       
+       selectedCharacter = PlayerPrefs.GetInt(selectedCharacterDataName, 0);
         playerObject = Instantiate(characters[selectedCharacter]) as GameObject; 
-          Vector3 spawn = new Vector3(-4, -1, 1);
-           playerObject.transform.position = spawn;
+        Vector3 spawn = new Vector3(-4, -1, 1);
+        playerObject.transform.position = spawn;
     }
     void Update()
     {

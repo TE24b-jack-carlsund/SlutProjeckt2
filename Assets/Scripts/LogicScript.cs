@@ -18,7 +18,7 @@ public class LogicScript : MonoBehaviour
     void Start()
     {
       currentHp = maxHp;
-      hp.maxValue = maxHp;
+      hp.value = maxHp;
       hp.value = currentHp;
       
     }
