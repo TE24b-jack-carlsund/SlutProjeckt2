@@ -11,9 +11,5 @@ public class EnemySpawner : MonoBehaviour
         transform.position = enemySpawner[randomIndex].position;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }

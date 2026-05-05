@@ -29,8 +29,11 @@ public class LogicScript : MonoBehaviour
    }
    public void Health()
    {
-       currentHp--;
-      hp.value = currentHp;
+      currentHp = currentHp - 1;
+      
+       hp.value = currentHp;
+       
+      
       if (currentHp == 0)
       {
          SceneManager.LoadScene("End");

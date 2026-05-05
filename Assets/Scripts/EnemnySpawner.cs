@@ -10,13 +10,6 @@ public class EnemnySpawner : MonoBehaviour
      float timeBetweenEnemies = 0.5f;
   float timeSinceLastEnemy = 0;
     private GameObject enemy;
-    
-   
-    void Start()
-    {
-        
-       
-    }
 
     void Update()
     {
