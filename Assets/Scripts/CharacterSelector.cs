@@ -5,54 +5,70 @@ using UnityEngine.SceneManagement;
 
 public class CharacterSelector : MonoBehaviour
 {
-    public GameObject[] playerObjects; //lista som innehåller karaktärerna
+    //Skapar en array med alla karaktärer
+    public GameObject[] playerObjects;
 
     [SerializeField]
     int selectedCharacter = 0; //håller koll på siffran för den valda karaktären
 
-    public float switchTime = 1f; //hur långt innan den byter till nästa karaktär
+    //hur långt innan den byter till nästa karaktär
+    public float switchTime = 1f;
 
-
-    
+    //används för att skapa en plats i datorns minne där jag senare kommer spara selectedkaraktär indexen
     private string selectedCharacterDataName = "SelectedCharacter"; //används för att skapa en plats i datorns minne där jag senare kommer spara selectedkaraktär indexen
 
-    // Gömmer alla karaktärer förutom en, sedan kommer den man väljer sparas i selected character
-     void Start()
+    void Start()
     {
-        StartCoroutine(CharacterLoop()); 
-        HideAllCharacters(); 
-        playerObjects[selectedCharacter].SetActive(true); 
+        //startar loopen som växlar mellan karaktärerna
+        StartCoroutine(CharacterLoop());
+
+        //gömmer alla karaktärer för att senare visa den valda
+        HideAllCharacters();
+        playerObjects[selectedCharacter].SetActive(true);
     }
-    // Gör att man inte kan se karaktärerna i arrayn.
+
+    // Går igenom array och inaktiverar varje gubbe(anropas i void Start)
     private void HideAllCharacters()
     {
         foreach (GameObject c in playerObjects)
         {
-            c.SetActive(false); 
+            c.SetActive(false);
         }
     }
-    // Character loop som loopas så att karaktären i characterselectern byts automatiskt.
+
+    //Den här loopen körs och hela tiden och byter mellan karaktärerna
     public IEnumerator CharacterLoop()
     {
         while (true)
         {
-            playerObjects[selectedCharacter].SetActive(false); 
-            selectedCharacter++; //går vidare till nästa
-            if (selectedCharacter >= playerObjects.Length) 
+            //döljer karaktären som är nu
+            playerObjects[selectedCharacter].SetActive(false);
+
+            //Den kommer gå till nästa index, men börja om när index numret blir högre än listan
+            selectedCharacter++;
+            if (selectedCharacter >= playerObjects.Length)
             {
                 selectedCharacter = 0;
             }
-            playerObjects[selectedCharacter].SetActive(true); 
-             yield return new WaitForSeconds(switchTime); 
+
+            //visar den nya karaktären
+            playerObjects[selectedCharacter].SetActive(true);
+
+            //Denna säger att loopen ska vänta innan den körs igen, vilket är viktigt för att man ska hinna se karaktärerna
+            yield return new WaitForSeconds(switchTime);
         }
     }
 
-    // Gör att gubben spånas in när spelet börjar. När du klickar på knappen
-    public void StartGame ()
+    //Denna körs när du klickar på start knappen
+    public void StartGame()
     {
-        StopAllCoroutines(); 
-        PlayerPrefs.SetInt(selectedCharacterDataName, selectedCharacter); //den sparar heltalet som du selektade karaktären, och när nästa scene laddas så kan den fråga playerprefs vilken gubbe som ska laddas. Första variabeln är namnet där datorn ska göra plats, medan andra variabeln är den som ska sparas på platsen. Det är gubben som den är på som sparas
-        SceneManager.LoadScene("Game"); //laddar game senen
+        //Den stoppar loopen så att den inte körs i backgrunden
+        StopAllCoroutines();
+
+        //Sparar indexen för den valda karaktären på en plats i datorns minne. Detta gör att den kan användas i "Game" scenen.
+        PlayerPrefs.SetInt(selectedCharacterDataName, selectedCharacter);
+
+        //laddar game senen
+        SceneManager.LoadScene("Game");
     }
 }
-

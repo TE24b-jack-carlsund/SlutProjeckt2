@@ -4,28 +4,37 @@ using UnityEngine.UI;
 
 public class BirdController : MonoBehaviour
 {
+    //referenser till komponenter och andra script
     private Rigidbody2D rb;
-    private LogicScript logic; //referens till logic scriptet
-    [SerializeField]
-    float speed = 2.5f;
+    private LogicScript logic;
 
+    [SerializeField]
+    float speed = 2.5f; //fågelns hastighet 
     void Start()
     {
+        //hämtar rigidbodyn från objecktet
         rb = GetComponent<Rigidbody2D>();
-        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>(); //den kollar efter komponenten med taggen logic, och sedan letar den efter logicscript
+
+        //letar upp objecktet och sedan scriptet logicscript
+        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>(); 
     }
+
+    //hanterar kollisioner med objeck som har isTriggered aktiverat, annars funkar det inte
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy")) //Jämför med andra objeckt om de har taggen enemy som spelaren colliderar med. Om de har de körs loopen logic.Health.
+        //kollar om objecktet som spelaren krockar med har taggen Enemy
+        if (collision.gameObject.CompareTag("Enemy")) 
         {
-        logic.Health();
+            //anropar metoden i logicscript och drar av health
+            logic.Health();
         }
     }
     void FixedUpdate()
     {
+        //hämtar inputen från A eller D, gör att du kan gå åt sidorna. 
+        float inputX = Input.GetAxisRaw("Horizontal");
 
-       float inputX = Input.GetAxisRaw("Horizontal"); //känner av om du klickar på piltangenterna a eller d
-        Vector2 movement = Vector2.right*inputX; //detta skapar en vecktor som är en riktning beroende på om jag klickar a eller d
-        rb.linearVelocityX = inputX*speed; //gångra hastigheten med vecktorn gånger time.deltatime
+        //gör att rigigidbodyn får rörelsen/spelaren kan styra gubben
+        rb.linearVelocityX = inputX * speed;
     }
 }
